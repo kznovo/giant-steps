@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Merriweather"
+    />
+    <title>Giant Steps</title>
+    <style>
+      body {
+        font-family: 'Merriweather', sans-serif;
+        margin: auto;
+        padding: 2%;
+        max-width: 45rem;
+      }
+    </style>
+  </head>
+  <body>
+    <small><a href="//kznovo.github.io"><< Back to kznovo.github.io</a></small>
+    <h1>Giant Steps (John Coltrane)</h1>
+    <button id="button">play</button>
+    <hr />
+    <h2>About</h2>
+    <p>Playing around with tone.js</p>
+    <ul>
+      <li>
+        <a href="//github.com/kznovo/giant-steps">Source (GitHub)</a>
+      </li>
+      <li>
+        <a href="//tonejs.github.io/">Tone.js</a>
+      </li>
+    </ul>
+    <script>
+      var synth = new Tone.AMSynth().toMaster();
+      var notes = [
+        { note: 'F#4', dur: 0.5 },
+        { note: 'D4', dur: 0.5 },
+        { note: 'B3', dur: 0.5 },
+        { note: 'G3', dur: 0.4 },
+        { note: 'A#3', dur: 1.1 },
+        { note: 'B3', dur: 0.4 },
+        { note: 'A3', dur: 0.6 },
+        { note: 'D4', dur: 0.5 },
+        { note: 'B3', dur: 0.5 },
+        { note: 'G3', dur: 0.5 },
+        { note: 'D#3', dur: 0.4 },
+        { note: 'F#3', dur: 1.1 },
+        { note: 'G3', dur: 0.4 },
+        { note: 'F3', dur: 0.5 },
+        { note: 'A#3', dur: 1.1 },
+        { note: 'B3', dur: 0.4 },
+        { note: 'A3', dur: 0.5 },
+        { note: 'D4', dur: 1.1 },
+        { note: 'D#4', dur: 0.4 },
+        { note: 'C#4', dur: 0.5 },
+        { note: 'F#4', dur: 1.1 },
+        { note: 'G4', dur: 0.4 },
+        { note: 'F4', dur: 0.5 },
+        { note: 'A#4', dur: 1.1 },
+        { note: 'F#4', dur: 0.4 },
+        { note: 'F#4', dur: 0.2 },
+      ];
+      document.getElementById('button').addEventListener('click', () => {
+        const start = Tone.now();
+        let now = 0;
+        for (const { note, dur } of notes) {
+          synth.triggerAttackRelease(note, dur, start + now);
+          now += dur;
+        }
+      });
+    </script>
+  </body>
+</html>
